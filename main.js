@@ -1,5 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const clock = document.querySelector(".clock");
 
 // Player Size, Position & Movement
 var playerHeight = 50;
@@ -44,6 +45,17 @@ var rightPressed = false;
 // event listener
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+/* A timer counting down 1 minute  */
+let time = 0;
+const updateTimer = setInterval(() => {
+    time += 1;
+    console.log(time);
+    clock.innerHTML = time;
+    // if (time === 30) {
+    //   alert("YOU SURVIVED 60 SECONDS!!!");
+    // }
+  }, 1000);
 
 function keyDownHandler (event){
   var keyCode = event.keyCode;
