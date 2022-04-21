@@ -1,25 +1,41 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
-//object positions
+// Player Size, Position & Movement
 var playerHeight = 50;
 var playerWidth = 50;
 let playerX = (canvas.width - playerWidth) / 2;
 let playerY = (canvas.height - playerHeight) / 2;
-// let playerX = 220;
-// let playerY = 120;
-let playerDX = 1;
-let playerDY = 1;
-let greeBallX = 50;
-let greeBallY = 50;
-let greeBallDX = 10;
-let greeBallDY = 10;
 
-var ballRadius = 20;
-var x = canvas.width / 2;
-var y = canvas.height - 30;
-var dx = 2;
-var dy = -2;
+// Red Ball Size, Position
+var redBallRadius = 30;
+var redBallX = canvas.width / 2;
+var redBallY = canvas.height - 30;
+var redBallDX = 2;
+var redBallDY = -2;
+
+// Green Ball Size, Position
+var greenBallRadius = 15;
+var greenBallX = canvas.width / 2;
+var greenBallY = canvas.height - 30;
+var greenBallDX = -5;
+var greenBallDY = 8;
+
+// Yellow Ball Size, Position
+var yellowBallRadius = 20;
+var yellowBallX = 20;
+var yellowBallY = canvas.height / 2 - 60;
+var yellowBallDX = -5;
+var yellowBallDY = 5;
+
+// Blue Ball Size, Position
+var blueBallRadius = 70;
+var blueBallX = canvas.width / 3;
+var blueBallY = canvas.height - 80 ;
+var blueBallDX = -5;
+var blueBallDY = 5;
+
+// Key Pressed Boolean
 var upPressed = false;
 var downPressed = false;
 var leftPressed = false;
@@ -88,105 +104,133 @@ function keyUpHandler (event){
   }
 }
 
-
-
-// document.addEventListener("keydown", keyDownHandler, false);
-// document.addEventListener("keyup", keyUpHandler, false);
-
-// function keyDownHandler(e) {
-//     if(e.key == "Up" || e.key == "ArrowUp" || "w" || "W") {
-//         upPressed = true;
-//         console.log("up")
-//     }
-//     else if(e.key == "Down" || e.key == "ArrowDown" || "s" || "S") {
-//         downPressed = true;
-//         console.log("down")
-//     }
-//     else if(e.key == "Left" || e.key == "ArrowLeft" || "a" || "A") {
-//         leftPressed = true;
-//         console.log("left")
-//     }
-//     else if(e.key == "Right" || e.key == "ArrowRight" || "d" || "D") {
-//         rightPressed = true;
-//         console.log("right")
-//     }
-//     else {
-//         upPressed = false;
-//         downPressed = false;
-//         leftPressed = false;
-//         rightPressed = false;
-//     }
-// }
-
-// function keyUpHandler(e) {
-//     if(e.key == "Up" || e.key == "ArrowUp" || "w" || "W") {
-//         upPressed = false;
-//     }
-//     else if(e.key == "Down" || e.key == "ArrowDown" || "s" || "S") {
-//         downPressed = false;
-//     }
-//     else if(e.key == "Left" || e.key == "ArrowLeft" || "a" || "A") {
-//         leftPressed = false;
-//     }
-//     else if(e.key == "Right" || e.key == "ArrowRight" || "d" || "D") {
-//         rightPressed = false;
-//     }
-// }
-
+// Player Draw Function
 function drawPlayer() {
   ctx.beginPath();
   ctx.rect(playerX, playerY, playerWidth, playerHeight);
-  ctx.fillStyle = "#6867d3";
+  ctx.fillStyle = "white";
   ctx.fill();
   ctx.closePath();
   // playerX += playerDX
   // playerY += playerDY
 }
 
-function drawBall() {
+// Red Ball Draw Function
+function drawRedBall() {
   ctx.beginPath();
-  ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+  ctx.arc(redBallX, redBallY, redBallRadius, 0, Math.PI * 2);
   ctx.fillStyle = "#FF0000";
   ctx.fill();
   ctx.closePath();
 }
 
+// Green Ball Draw Function
+function drawGreenBall() {
+    ctx.beginPath();
+    ctx.arc(greenBallX, greenBallY, greenBallRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#00ff00";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  // Yellow Ball Draw Function
+function drawYellowBall() {
+    ctx.beginPath();
+    ctx.arc(yellowBallX, yellowBallY, yellowBallRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+    // Blue Ball Draw Function
+function drawBlueBall() {
+    ctx.beginPath();
+    ctx.arc(blueBallX, blueBallY, blueBallRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+// Calling Draw Functions
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawBall();
+  drawRedBall();
   drawPlayer();
+  drawGreenBall();
+  drawYellowBall();
+  drawBlueBall();
 
-  if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
-    dx = -dx;
+  // Red Ball Movement
+  if (redBallX + redBallDX > canvas.width - redBallRadius || redBallX + redBallDX < redBallRadius) {
+    redBallDX = -redBallDX;
   }
-  if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
-    dy = -dy;
+  if (redBallY + redBallDY > canvas.height - redBallRadius || redBallY + redBallDY < redBallRadius) {
+    redBallDY = -redBallDY;
   }
 
+  // Green Ball Movement
+  if (greenBallX + greenBallDX > canvas.width - greenBallRadius || greenBallX + greenBallDX < greenBallRadius) {
+    greenBallDX = -greenBallDX;
+  }
+  if (greenBallY + greenBallDY > canvas.height - greenBallRadius || greenBallY + greenBallDY < greenBallRadius) {
+    greenBallDY = -greenBallDY;
+  }
+
+// Yellow Ball Movement
+if (yellowBallX + yellowBallDX > canvas.width - yellowBallRadius || yellowBallX + yellowBallDX < yellowBallRadius) {
+    yellowBallDX = -yellowBallDX;
+  }
+  if (yellowBallY + yellowBallDY > canvas.height - yellowBallRadius || yellowBallY + yellowBallDY < yellowBallRadius) {
+    yellowBallDY = -yellowBallDY;
+  }
+
+  // Blue Ball Movement
+if (blueBallX + blueBallDX > canvas.width - blueBallRadius || blueBallX + blueBallDX < blueBallRadius) {
+    blueBallDX = -blueBallDX;
+  }
+  if (blueBallY + blueBallDY > canvas.height - blueBallRadius || blueBallY + blueBallDY < blueBallRadius) {
+    blueBallDY = -blueBallDY;
+  }
+
+  // Player Movement
   if (upPressed) {
-    playerY -= 2;
+    playerY -= 3.25;
     if (playerY < 0) {
       playerY = 0;
     }
   } else if (downPressed) {
-    playerY += 2;
+    playerY += 3.25;
     if (playerY + playerHeight > canvas.height) {
       playerY = canvas.height - playerHeight;
     }
   } else if (leftPressed) {
-    playerX -= 2;
+    playerX -= 3.25;
     if (playerX < 0) {
       playerX = 0;
     }
   } else if (rightPressed) {
-    playerX += 2;
+    playerX += 3.25;
     if (playerX + playerWidth > canvas.width) {
       playerX = canvas.width - playerWidth;
     }
   }
 
-  x += dx;
-  y += dy;
+// Red Ball Movement
+  redBallX += redBallDX;
+  redBallY += redBallDY;
+
+// Green Ball Movement
+  greenBallX += greenBallDX;
+  greenBallY += greenBallDY;
+
+  // Yellow Ball Movement
+  yellowBallX += yellowBallDX;
+  yellowBallY += 0.1;
+
+  // Blue Ball Movement
+  blueBallX += 0.05;
+  blueBallY += blueBallDY;
+
 }
 setInterval(draw, 10);
 
