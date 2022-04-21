@@ -25,26 +25,26 @@ var downPressed = false;
 var leftPressed = false;
 var rightPressed = false;
 
-//event listener
-window.addEventListener("keydown", onKeyDown, false);
-window.addEventListener("keyup", onKeyUp, false);
+// event listener
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
 
-const onKeyDown = (event) => {
+function keyDownHandler (event){
   var keyCode = event.keyCode;
-  switch (keyCode) {
+  switch(keyCode){
     case 87: // W key
     upPressed = true;
     break;
-  case 38: // up arrow
-    upPressed = true;
-    break;
+    case 38: // up arrow
+      upPressed = true;
+      break;
   case 83: // A key
     downPressed = true;
     break;
   case 40: // down arrow
     downPressed = true;
     break;
-  case 63: // A key
+  case 65: // A key
     leftPressed = true;
     break;
   case 37:// left arrow
@@ -57,13 +57,13 @@ const onKeyDown = (event) => {
     rightPressed = true;
     break;
   }
-};
-const onKeyUp = (event) => {
+}
+function keyUpHandler (event){
   var keyCode = event.keyCode;
-  switch (keyCode) {
+  switch(keyCode){
     case 87: // W key
-      upPressed = false;
-      break;
+    upPressed = false;
+    break;
     case 38: // up arrow
       upPressed = false;
       break;
@@ -73,7 +73,7 @@ const onKeyUp = (event) => {
     case 40: // down arrow
       downPressed = false;
       break;
-    case 63: // A key
+    case 65: // A key
       leftPressed = false;
       break;
     case 37: // left arrow
@@ -86,7 +86,9 @@ const onKeyUp = (event) => {
       rightPressed = false;
       break;
   }
-};
+}
+
+
 
 // document.addEventListener("keydown", keyDownHandler, false);
 // document.addEventListener("keyup", keyUpHandler, false);
