@@ -33,7 +33,7 @@ var yellowBallDY = 5;
 var blueBallRadius = 70;
 var blueBallX = canvas.width / 3;
 var blueBallY = canvas.height - 80 ;
-var blueBallDX = -5;
+var blueBallDX = 0.05;
 var blueBallDY = 5;
 
 // Key Pressed Boolean
@@ -237,12 +237,14 @@ if (blueBallX + blueBallDX > canvas.width - blueBallRadius || blueBallX + blueBa
 
   // Yellow Ball Movement
   yellowBallX += yellowBallDX;
-  yellowBallY += 0.1;
+  yellowBallY += yellowBallDY;
 
   // Blue Ball Movement
-  blueBallX += 0.05;
+  blueBallX += blueBallDX;
   blueBallY += blueBallDY;
-
+  if(playerX.intersects(redBall)) {
+    console.log("collision")
+}
 }
 setInterval(draw, 10);
 
