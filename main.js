@@ -242,9 +242,9 @@ if (blueBallX + blueBallDX > canvas.width - blueBallRadius || blueBallX + blueBa
   // Blue Ball Movement
   blueBallX += blueBallDX;
   blueBallY += blueBallDY;
-  if(playerX.intersects(redBall)) {
-    console.log("collision")
-}
+//   if(playerX.intersects(redBall)) {
+//     console.log("collision")
+// }
 }
 setInterval(draw, 10);
 
