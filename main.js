@@ -153,7 +153,7 @@ function drawYellowBall() {
     ctx.fill();
     ctx.closePath();
   }
-s
+
     // Blue Ball Draw Function
 function drawBlueBall() { 
     ctx.beginPath();
