@@ -32,7 +32,7 @@
 
 }
 
-/* @media screen and (min-width: 320px) { 
+/* @media screen and (min-width: 320px ) and ( min-width: 991px) { 
 #myCanvas{
     background-color: black;
     display: block;
@@ -51,3 +51,18 @@
     }
     } */
 
+    @media screen and (max-width: 965px) {
+        #myCanvas{
+            margin: 0 auto;
+            width: 90%;
+            float: top;
+            margin-bottom: 35rem;
+        }
+        .game{
+            
+        }
+
+        .clock{
+            margin-bottom: 10rem;
+        }
+    }
